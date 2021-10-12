@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://Yehor:12345@cluster0.babwo.mongodb.net/yehor?retryWrites=true&w=majority",
+  "jwtSecret": "Yehor"
+
+}
