@@ -18,6 +18,7 @@ app.use('/auth', require('./routes/auth.routes.js'))
 app.use('/user', require('./routes/user.routes.js'))
 app.use('/questionnaire', require('./routes/questionnaire.routes.js'))
 app.use('/views', require('./routes/view.routes.js'))
+app.use('/iot', require('./routes/iot.routes.js'))
 
 let options = {
     definition: {

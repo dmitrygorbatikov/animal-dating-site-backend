@@ -59,7 +59,10 @@ class QuestionnaireController{
 
     async getQuestionnaire(req,res){
         try{
+            const paidQuestionnaire = await Questionnaire.find({paid: true})
+            const notPaidQuestionnaire = await Questionnaire.find({paid: false})
 
+            return res.status(200).json({paidQuestionnaire, notPaidQuestionnaire})
 
         }
         catch (e) {

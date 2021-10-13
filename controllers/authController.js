@@ -13,6 +13,25 @@ class AuthController{
 
             const hashedPassword = await bcrypt.hash(req.body.password, 12)
 
+            if(!req.body.email.includes('@') || !req.body.email.includes('.')){
+                return res.status(400).json({error: "Введите корректный email"})
+            }
+            let phone = req.body.phone.substring(1, req.body.phone.length)
+
+            for (let i = 0; i < phone.length; i++) {
+                if(!isNaN(parseInt(phone[i]))){
+                    if(req.body.phone.toString()[0] === '+' || !isNaN(parseInt(req.body.phone[0].toString()))){
+                        phone = req.body.phone
+                    }
+                    else{
+                        return res.status(400).json({error: "Введите корректный телефон"})
+                    }
+                }
+                else {
+                    return res.status(400).json({error: "Введите корректный телефон"})
+                }
+            }
+
             const user = new User({
                 name: req.body.name,
                 surname: req.body.surname,

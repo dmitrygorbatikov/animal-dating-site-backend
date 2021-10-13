@@ -126,6 +126,30 @@ router.get('/filter', authMiddleware, questionnaireController.filterQuestionnair
  *         description: Нет авторизации
  */
 
+router.get('/', authMiddleware, questionnaireController.getQuestionnaire)
+
+/**
+ * @swagger
+ * /questionnaire:
+ *   get:
+ *     summary: Получение отдельно проплаченных и не проплаченных анкет
+ *     tags: [Questionnaire]
+ *     parameters:
+ *       - in: header
+ *         name: token
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: access_token
+ *     responses:
+ *       200:
+ *         description: Список анкет
+ *       400:
+ *         description: Что-то пошло не так
+ *       401:
+ *         description: Нет авторизации
+ */
+
 module.exports = router
 
 /**
